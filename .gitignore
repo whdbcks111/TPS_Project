@@ -1,0 +1,19 @@
+# Unreal Engine generated files
+/Binaries/
+/DerivedDataCache/
+/Intermediate/
+/Saved/
+/Plugins/**/Binaries/
+/Plugins/**/Intermediate/
+
+# Local IDE files and generated project files
+/.idea/
+/.vs/
+*.sln
+*.suo
+*.VC.db
+*.VC.opendb
+
+# Local outputs and temporary files
+/output/
+/tmp/
