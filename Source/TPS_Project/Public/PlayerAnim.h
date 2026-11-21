@@ -24,4 +24,7 @@ public:
 	bool IsInAir;
 	
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
+	
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category="Player Anim")
+	void PlayFireAnimation();
 };

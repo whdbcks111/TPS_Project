@@ -3,6 +3,8 @@
 
 #include "Public/TPSPlayer.h"
 
+#include "PlayerAnim.h"
+#include "PlayerMoveComp.h"
 #include "Blueprint/UserWidget.h"
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -71,6 +73,8 @@ ATPSPlayer::ATPSPlayer()
 	
 	//몇단 점프까지 지정
 	JumpMaxCount = 2;
+	
+	PlayerMoveComp = CreateDefaultSubobject<UPlayerMoveComp>(TEXT("PlayerMoveComp"));
 }
 
 // Called when the game starts or when spawned
@@ -156,6 +160,13 @@ void ATPSPlayer::PlayerJump()
 
 void ATPSPlayer::PlayerFire()
 {
+	// Anim 재생
+	auto anim = Cast<UPlayerAnim>(GetMesh()->GetAnimInstance());
+	if (anim)
+	{
+		anim->PlayFireAnimation();
+	}
+	
 	FHitResult Hit;
 	FVector Start = Camera->GetComponentLocation();
 	FVector End = Start + Camera->GetForwardVector() * 50000.0;
@@ -175,7 +186,6 @@ void ATPSPlayer::PlayerFire()
 			Hit.GetComponent()->AddImpulseAtLocation(Camera->GetForwardVector().GetSafeNormal() * 1000000.0f, Hit.Location);
 		}
 	}
-	
 }
 
 void ATPSPlayer::Aim()

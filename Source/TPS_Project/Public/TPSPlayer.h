@@ -69,4 +69,8 @@ public:
 	// sniper instance
 	UPROPERTY()
 	class UUserWidget* SniperUI;
+	
+	// 사용자 컴포넌트 User Component
+	UPROPERTY(VisibleAnywhere)
+	class UPlayerMoveComp* PlayerMoveComp;
 };
